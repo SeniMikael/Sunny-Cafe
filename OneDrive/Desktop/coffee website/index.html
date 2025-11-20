@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Aroma - Premium Coffee Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and basic styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #6b4226, #c78d5a);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 { font-size: 1.8rem; }
+        nav a { margin-left: 1.5rem; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: #ffd700; }
+
+        /* Hero Carousel */
+        .hero {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slide.active { opacity: 1; }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 1rem;
+        }
+
+        .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 1.5rem; }
+        .hero button {
+            background: #ffd700;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .hero button:hover { transform: scale(1.05); }
+
+        /* Carousel Arrows */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            background: rgba(0,0,0,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 3;
+            user-select: none;
+        }
+        .arrow-left { left: 20px; }
+        .arrow-right { right: 20px; }
+
+        /* Sections */
+        section { padding: 4rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 2rem; }
+        .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .section-header p { font-size: 1rem; color: #555; }
+
+        .about { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; }
+        .about img { flex: 1 1 400px; border-radius: 10px; transition: transform 0.3s; }
+        .about img:hover { transform: scale(1.05); }
+        .about-text { flex: 1 1 400px; }
+
+        .menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .menu-card { background: #fdf6f0; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .menu-card:hover { transform: translateY(-5px); }
+        .menu-card img { width: 100%; height: 200px; object-fit: cover; }
+        .menu-card-content { padding: 1rem; }
+        .menu-card-content h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .menu-card-content p { font-size: 0.9rem; color: #666; }
+
+        .testimonials { background: #6b4226; color: white; text-align: center; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .testimonial-card { background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; }
+        .testimonial-card p { font-style: italic; margin-bottom: 1rem; }
+        .testimonial-card h4 { font-weight: bold; }
+
+        footer { background: #282828; color: white; text-align: center; padding: 1.5rem; }
+
+        @media (min-width: 768px) { 
+            .hero-content { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Café Aroma</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero Carousel -->
+<section class="hero">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1470&q=80');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=1470&q=80');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1565958011702-44bfc3d5c2e7?auto=format&fit=crop&w=1470&q=80');"></div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h2>Experience the Best Coffee in Town</h2>
+        <p>Freshly brewed, aromatic coffee served with love. Come, enjoy your perfect cup!</p>
+        <button>Order Now</button>
+    </div>
+
+    <div class="arrow arrow-left">&#10094;</div>
+    <div class="arrow arrow-right">&#10095;</div>
+</section>
+
+<section id="about">
+    <div class="section-header">
+        <h2>Our Story</h2>
+        <p>Passionate about coffee, we bring you the finest blends from around the world.</p>
+    </div>
+    <div class="about">
+        <img src="https://images.unsplash.com/photo-1510626176961-4b9f07b4fd42?auto=format&fit=crop&w=800&q=80" alt="Coffee beans">
+        <div class="about-text">
+            <p>Since 2010, Café Aroma has been dedicated to crafting the perfect cup of coffee. Using only high-quality beans and artisanal methods, our baristas create an unforgettable experience for every coffee lover.</p>
+        </div>
+    </div>
+</section>
+
+<section id="menu">
+    <div class="section-header">
+        <h2>Our Coffee Menu</h2>
+        <p>Explore our wide variety of coffee blends and specialties.</p>
+    </div>
+    <div class="menu">
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Espresso">
+            <div class="menu-card-content">
+                <h3>Espresso</h3>
+                <p>Rich and bold espresso made from premium beans.</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1565958011702-44bfc3d5c2e7?auto=format&fit=crop&w=800&q=80" alt="Cappuccino">
+            <div class="menu-card-content">
+                <h3>Cappuccino</h3>
+                <p>Creamy, foamy cappuccino perfect for any time of day.</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1556911073-52527ac437f5?auto=format&fit=crop&w=800&q=80" alt="Latte">
+            <div class="menu-card-content">
+                <h3>Latte</h3>
+                <p>Soft and smooth latte with a touch of sweetness.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="testimonials">
+    <div class="section-header">
+        <h2>What Our Customers Say</h2>
+        <p>Thousands of coffee lovers trust us for their daily cup.</p>
+    </div>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <p>"The best coffee I have ever tasted! Friendly staff and cozy ambiance."</p>
+            <h4>- Sarah J.</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"I visit Café Aroma every morning. Their cappuccino is unbeatable!"</p>
+            <h4>- Michael B.</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"Amazing place to relax and enjoy high-quality coffee. Highly recommended."</p>
+            <h4>- Emily R.</h4>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Visit our café or reach out online.</p>
+    </div>
+    <p style="text-align:center;">📍 123 Coffee Street, Your City | ☎ +123 456 7890 | ✉ contact@cafearoma.com</p>
+</section>
+
+<footer>
+    &copy; 2025 Café Aroma. All rights reserved.
+</footer>
+
+<script>
+    const slides = document.querySelectorAll('.hero-slide');
+    const prev = document.querySelector('.arrow-left');
+    const next = document.querySelector('.arrow-right');
+    let current = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+    }
+
+    prev.addEventListener('click', () => {
+        current = (current === 0) ? slides.length - 1 : current - 1;
+        showSlide(current);
+    });
+
+    next.addEventListener('click', () => {
+        current = (current === slides.length - 1) ? 0 : current + 1;
+        showSlide(current);
+    });
+
+    // Auto slide every 5 seconds
+    setInterval(() => {
+        current = (current === slides.length - 1) ? 0 : current + 1;
+        showSlide(current);
+    }, 5000);
+</script>
+
+</body>
+</html>
